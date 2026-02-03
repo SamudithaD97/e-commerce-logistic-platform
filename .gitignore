@@ -1,0 +1,86 @@
+############################
+# Java / Maven / Gradle
+############################
+target/
+build/
+out/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+############################
+# IDE Files
+############################
+
+# IntelliJ
+.idea/
+*.iml
+*.iws
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code
+.vscode/
+
+############################
+# Logs
+############################
+*.log
+logs/
+
+############################
+# OS Files
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# Spring Boot
+############################
+*.pid
+*.seed
+*.h2.db
+*.trace
+*.mv.db
+
+############################
+# Environment / Secrets
+############################
+.env
+.env.*
+application-local.yml
+application-dev.yml
+application-test.yml
+
+############################
+# Database Dumps
+############################
+*.sql
+*.db
+
+############################
+# Generated Files
+############################
+*.class
+*.jar
+*.war
+*.ear
+
+############################
+# Node (if frontend later)
+############################
+node_modules/
+
+############################
+# Coverage / Reports
+############################
+coverage/
+*.exec
+
+############################
+# Misc
+############################
+tmp/
+temp/
