@@ -74,13 +74,6 @@ Organization B (Adidas)
 - ✅ **Duplicate Prevention** - Business rule validations
 - ✅ **Error Handling** - Centralized exception management
 
-### Business Rules
-
-- 🔒 Prevent duplicate orders by external order ID
-- 🔒 Ensure website belongs to organization before data operations
-- 🔒 Cascade relationships (Order → Fulfillment → Tracking)
-- 🔒 Validation of all input data with meaningful error messages
-
 ---
 
 ## 🧱 Tech Stack
@@ -232,8 +225,6 @@ e-commerce-logistics-platform/
 | `POST` | `/api/organizations` | Create new organization |
 | `GET` | `/api/organizations` | List all organizations (paginated) |
 | `GET` | `/api/organizations/{id}` | Get organization by ID |
-| `PUT` | `/api/organizations/{id}` | Update organization |
-| `DELETE` | `/api/organizations/{id}` | Delete organization |
 
 ### Website APIs
 
@@ -241,10 +232,6 @@ e-commerce-logistics-platform/
 |--------|----------|-------------|
 | `POST` | `/api/websites` | Create new website |
 | `GET` | `/api/websites` | List all websites (paginated) |
-| `GET` | `/api/websites/{id}` | Get website by ID |
-| `GET` | `/api/websites/search` | Search by domain/code |
-| `PUT` | `/api/websites/{id}` | Update website |
-| `DELETE` | `/api/websites/{id}` | Delete website |
 
 ### Order APIs
 
@@ -252,7 +239,8 @@ e-commerce-logistics-platform/
 |--------|----------|-------------|
 | `POST` | `/api/orders` | Create new order |
 | `GET` | `/api/orders/{orderId}` | Get order by ID |
-| `GET` | `/api/orders/search` | Search orders with filters |
+| `GET` | `/api/orders/{orderId}` | Get external order by ID (paginated)|
+| `GET` | `/api/orders/search` | Search orders with filters (paginated) |
 | `PUT` | `/api/orders/{orderId}` | Full update of order |
 | `PATCH` | `/api/orders/{orderId}` | Partial update of order |
 | `DELETE` | `/api/orders/{orderId}` | Delete order (204) |
@@ -274,7 +262,8 @@ e-commerce-logistics-platform/
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/orders/{orderId}/fulfillments` | Create fulfillment |
-| `GET` | `/api/orders/{orderId}/fulfillments` | List fulfillments for order |
+| `GET` | `/api/orders/{orderId}/fulfillments` | List fulfillments for order(paginated) |
+| `GET` | `/api/orders/{orderId}/fulfillments/{id}` | Get fulfillment details(paginated) |
 | `GET` | `/api/orders/{orderId}/fulfillments/{id}` | Get fulfillment details |
 | `PUT` | `/api/orders/{orderId}/fulfillments/{id}` | Full update |
 | `PATCH` | `/api/orders/{orderId}/fulfillments/{id}` | Partial update |
@@ -285,9 +274,22 @@ e-commerce-logistics-platform/
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/fulfillments/{id}/tracking` | Add tracking record |
-| `GET` | `/api/fulfillments/{id}/tracking` | List tracking records |
-| `GET` | `/api/fulfillments/{id}/tracking/{trackingId}` | Get tracking details |
-| `PATCH` | `/api/fulfillments/{id}/tracking/{trackingId}` | Update tracking status |
+| `GET` | `/api/fulfillments/{id}/tracking` | List tracking records(paginated) |
+
+---
+## 📬 Postman Collection
+
+A complete Postman collection is included in this repository: `logistics-platform-api.json`
+
+### Import to Postman:
+1. Open Postman
+2. Click **Import** button
+3. Select the `logistics-platform-api.json` file
+4. The collection will be imported with all endpoints ready to use
+
+### Environment Variables:
+- `baseUrl`: http://localhost:8080/api
+- Update these in Postman after import based on your setup
 
 ---
 
@@ -366,61 +368,6 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 # Logging
 logging.level.org.springframework.web=INFO
 logging.level.com.samuditha.logisticsplatform=DEBUG
-```
-
----
-
-## 📚 API Documentation
-
-### Using Swagger UI
-
-Once the application is running, access the interactive API documentation:
-
-```
-http://localhost:8080/swagger-ui.html
-```
-
-### Postman Collection
-
-Import the provided `logistics-platform-api.json` file into Postman for ready-to-use API requests.
-
-### Example Request
-
-**Create an Order:**
-
-```bash
-curl -X POST http://localhost:8080/api/orders \
-  -H "Content-Type: application/json" \
-  -d '{
-    "organizationId": 1,
-    "websiteId": 1,
-    "externalOrderId": "ORDER-12345",
-    "orderNumber": "ORD-001",
-    "status": "PENDING",
-    "financialStatus": "PAID",
-    "totalAmount": 150.00,
-    "currency": "USD",
-    "customerEmail": "customer@example.com"
-  }'
-```
-
-**Response:**
-
-```json
-{
-  "id": 1,
-  "organizationId": 1,
-  "websiteId": 1,
-  "externalOrderId": "ORDER-12345",
-  "orderNumber": "ORD-001",
-  "status": "PENDING",
-  "financialStatus": "PAID",
-  "totalAmount": 150.00,
-  "currency": "USD",
-  "customerEmail": "customer@example.com",
-  "createdAt": "2026-02-03T10:30:00",
-  "updatedAt": "2026-02-03T10:30:00"
-}
 ```
 
 ---
@@ -504,63 +451,15 @@ Centralized exception handling using `@RestControllerAdvice`:
 ## 🔮 Future Enhancements
 
 - [ ] **Authentication & Authorization** (Spring Security + JWT)
-- [ ] **Rate Limiting** for API endpoints
-- [ ] **Event-Driven Architecture** (Apache Kafka/RabbitMQ)
-- [ ] **Caching Layer** (Redis)
 - [ ] **Docker Support** (Dockerfile + docker-compose.yml)
 - [ ] **Kubernetes Deployment** configurations
-- [ ] **Monitoring & Observability** (Prometheus + Grafana)
 - [ ] **Advanced Analytics** dashboard
 - [ ] **Webhook Support** for real-time notifications
 - [ ] **Multi-Database Support** (PostgreSQL, MongoDB)
-- [ ] **GraphQL API** support
-- [ ] **Internationalization** (i18n)
 
 ---
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Code Standards
-
-- Follow Java naming conventions
-- Write unit tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting PR
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 📧 Contact
-
-**Your Name** - [@yourtwitter](https://twitter.com/yourtwitter)
-
-Project Link: [https://github.com/yourusername/logistics-platform](https://github.com/yourusername/logistics-platform)
-
----
-
-## 🙏 Acknowledgments
-
-- [Spring Boot Documentation](https://spring.io/projects/spring-boot)
-- [Spring Data JPA Guide](https://spring.io/guides/gs/accessing-data-jpa/)
-- [RESTful API Design Best Practices](https://restfulapi.net/)
-- [MySQL Documentation](https://dev.mysql.com/doc/)
-
----
 
 <div align="center">
-  <p>Made with ❤️ by <a href="https://github.com/yourusername">Your Name</a></p>
-  <p>⭐ Star this repository if you find it helpful!</p>
+  <p>Made by <a href="https://github.com/yourusername">Your Name</a></p>
 </div>
