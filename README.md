@@ -45,8 +45,10 @@ This project is a **multi-tenant logistics platform** that enables:
 Organization A (Nike)
   ├── Website 1 (nike.com)
   │   ├── Order #1001
+  │   │   ├── Order Items (Product details)
   │   │   ├── Fulfillment #1
   │   │   │   └── Tracking: USPS-123456
+  │   │   │       └── Tracking Events (Status updates)
   │   │   └── Fulfillment #2
   │   └── Order #1002
   └── Website 2 (nikestore.eu)
@@ -67,8 +69,10 @@ Organization B (Adidas)
 - ✅ **Organization Management** - Create and manage multiple organizations
 - ✅ **Website Management** - Associate websites with organizations
 - ✅ **Order Management** - Full CRUD operations with advanced search
+- ✅ **Order Items** - Track individual products within orders
 - ✅ **Fulfillment Tracking** - Manage order fulfillments
 - ✅ **Tracking Records** - Real-time shipment tracking
+- ✅ **Tracking Events** - Detailed shipment status history
 - ✅ **Pagination & Filtering** - Efficient data retrieval with search capabilities
 - ✅ **Partial Updates** - PATCH support for flexible updates
 - ✅ **Duplicate Prevention** - Business rule validations
@@ -139,8 +143,10 @@ e-commerce-logistics-platform/
 │   │   │   ├── entity/
 │   │   │   │   ├── Fulfillment.java
 │   │   │   │   ├── Order.java
+│   │   │   │   ├── OrderItem.java
 │   │   │   │   ├── Organization.java
 │   │   │   │   ├── Tracking.java
+│   │   │   │   ├── TrackingEvent.java
 │   │   │   │   └── Website.java
 │   │   │   │
 │   │   │   ├── exception/
@@ -149,9 +155,11 @@ e-commerce-logistics-platform/
 │   │   │   ├── repository/
 │   │   │   │   ├── FulfillmentRepository.java
 │   │   │   │   ├── OrderRepository.java
+│   │   │   │   ├── OrderItemRepository.java
 │   │   │   │   ├── StoreRepository.java
 │   │   │   │   ├── TenantRepository.java
-│   │   │   │   └── TrackingRepository.java
+│   │   │   │   ├── TrackingRepository.java
+│   │   │   │   └── TrackingEventRepository.java
 │   │   │   │
 │   │   │   ├── service/
 │   │   │   │   ├── serviceImpl/
@@ -193,18 +201,22 @@ e-commerce-logistics-platform/
        │ 1:N
        ▼
 ┌──────────────┐
-│    Order     │
+│    Order     │────────┐
+└──────┬───────┘        │ 1:N
+       │ 1:N            ▼
+       ▼          ┌──────────────┐
+┌──────────────┐ │  Order Item  │
+│ Fulfillment  │ └──────────────┘
 └──────┬───────┘
        │ 1:N
        ▼
 ┌──────────────┐
-│ Fulfillment  │
-└──────┬───────┘
-       │ 1:N
-       ▼
-┌──────────────┐
-│   Tracking   │
-└──────────────┘
+│   Tracking   │────────┐
+└──────────────┘        │ 1:N
+                        ▼
+                  ┌──────────────────┐
+                  │ Tracking Event   │
+                  └──────────────────┘
 ```
 
 ### Key Relationships
@@ -212,7 +224,9 @@ e-commerce-logistics-platform/
 - One **Organization** has many **Websites**
 - One **Website** has many **Orders**
 - One **Order** has many **Fulfillments**
+- One **Order** has many **Order Items**
 - One **Fulfillment** has many **Tracking** records
+- One **Tracking** has many **Tracking Events**
 
 ---
 
@@ -239,31 +253,18 @@ e-commerce-logistics-platform/
 |--------|----------|-------------|
 | `POST` | `/api/orders` | Create new order |
 | `GET` | `/api/orders/{orderId}` | Get order by ID |
-| `GET` | `/api/orders/{orderId}` | Get external order by ID (paginated)|
+| `GET` | `/api/orders/external/{externalOrderId}` | Get order by external ID |
 | `GET` | `/api/orders/search` | Search orders with filters (paginated) |
 | `PUT` | `/api/orders/{orderId}` | Full update of order |
 | `PATCH` | `/api/orders/{orderId}` | Partial update of order |
 | `DELETE` | `/api/orders/{orderId}` | Delete order (204) |
-
-#### Order Search Filters
-
-- `organizationId` - Filter by organization
-- `websiteId` - Filter by website
-- `status` - Order status (PENDING, PROCESSING, COMPLETED, CANCELLED)
-- `financialStatus` - Payment status (PAID, UNPAID, REFUNDED)
-- `fulfillmentStatus` - Fulfillment status
-- `externalOrderId` - External system order ID
-- `orderNumber` - Order number
-- `startDate` / `endDate` - Date range filter
-- `page` / `size` / `sort` - Pagination parameters
 
 ### Fulfillment APIs
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/orders/{orderId}/fulfillments` | Create fulfillment |
-| `GET` | `/api/orders/{orderId}/fulfillments` | List fulfillments for order(paginated) |
-| `GET` | `/api/orders/{orderId}/fulfillments/{id}` | Get fulfillment details(paginated) |
+| `GET` | `/api/orders/{orderId}/fulfillments` | List fulfillments for order (paginated) |
 | `GET` | `/api/orders/{orderId}/fulfillments/{id}` | Get fulfillment details |
 | `PUT` | `/api/orders/{orderId}/fulfillments/{id}` | Full update |
 | `PATCH` | `/api/orders/{orderId}/fulfillments/{id}` | Partial update |
@@ -274,7 +275,7 @@ e-commerce-logistics-platform/
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/fulfillments/{id}/tracking` | Add tracking record |
-| `GET` | `/api/fulfillments/{id}/tracking` | List tracking records(paginated) |
+| `GET` | `/api/fulfillments/{id}/tracking` | List tracking records (paginated) |
 
 ---
 ## 📬 Postman Collection
@@ -321,12 +322,12 @@ CREATE DATABASE logistics_platform;
 
 3. **Update application.properties**
 
+Update the database credentials in `src/main/resources/application.properties`:
+
 ```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/logistics_platform
+spring.datasource.url=jdbc:mysql://localhost:3306/logistics_platform?useSSL=true&requireSSL=true&verifyServerCertificate=false
 spring.datasource.username=root
 spring.datasource.password=yourpassword
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
 ```
 
 4. **Build the project**
@@ -350,22 +351,40 @@ The application will start on: **http://localhost:8080**
 ### application.properties
 
 ```properties
-# Server Configuration
-server.port=8080
+# ===============================
+# APPLICATION NAME
+# ===============================
+spring.application.name=logistics-platform
 
-# Database Configuration
-spring.datasource.url=jdbc:mysql://localhost:3306/logistics_platform
+# ===============================
+# DATABASE CONNECTION
+# ===============================
+spring.datasource.url=jdbc:mysql://localhost:3306/logistics_platform?useSSL=true&requireSSL=true&verifyServerCertificate=false
 spring.datasource.username=root
 spring.datasource.password=yourpassword
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
-# JPA/Hibernate Configuration
+# ===============================
+# JPA / HIBERNATE SETTINGS
+# ===============================
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
-# Logging
+# ===============================
+# SERVER SETTINGS
+# ===============================
+server.port=8080
+
+# ===============================
+# JSON SETTINGS
+# ===============================
+spring.jackson.time-zone=EST
+
+# ===============================
+# LOGGING
+# ===============================
 logging.level.org.springframework.web=INFO
 logging.level.com.samuditha.logisticsplatform=DEBUG
 ```
