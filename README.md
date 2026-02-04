@@ -20,12 +20,9 @@ A scalable Spring Boot backend system designed to support multiple organizations
 - [API Endpoints](#-api-endpoints)
 - [Getting Started](#-getting-started)
 - [Configuration](#-configuration)
-- [API Documentation](#-api-documentation)
 - [Testing](#-testing)
 - [Error Handling](#-error-handling)
 - [Future Enhancements](#-future-enhancements)
-- [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
@@ -478,8 +475,3 @@ Centralized exception handling using `@RestControllerAdvice`:
 - [ ] **Multi-Database Support** (PostgreSQL, MongoDB)
 
 ---
-
-
-<div align="center">
-  <p>Made by <a href="https://github.com/yourusername">Your Name</a></p>
-</div>
