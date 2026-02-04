@@ -1,0 +1,3792 @@
+{
+  "info": {
+    "_postman_id": "e21d4481-9efe-4d73-a5a7-f8a84b9549fb",
+    "name": "Logistic-platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "29153807"
+  },
+  "item": [
+    {
+      "name": "Organization",
+      "item": [
+        {
+          "name": "Create organization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"abc\",\n  \"externalId\": \"string\",\n  \"status\": \"INACTIVE\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/organizations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "organizations"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"externalId\": \"string\",\n  \"status\": \"INACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"554454db-62fc-537d-a373-12fafc1bac3f\",\n  \"name\": \"string\",\n  \"status\": \"INACTIVE\",\n  \"createdAt\": \"1966-09-10T07:52:00.758Z\",\n  \"updatedAt\": \"2015-04-02T19:58:30.615Z\",\n  \"externalId\": \"string\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"string\",\n  \"externalId\": \"string\",\n  \"status\": \"INACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/organizations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "organizations-get all with filtrations",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/organizations?page=0&size=5&status=INACTIVE&name=a",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "organizations"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "5"
+                },
+                {
+                  "key": "status",
+                  "value": "INACTIVE"
+                },
+                {
+                  "key": "name",
+                  "value": "a"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "organizations-get by uuid",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}/organizations/5836c954-8565-45da-893d-e9b9b4370dc8",
+              "host": [
+                "{{baseURL}}"
+              ],
+              "path": [
+                "organizations",
+                "5836c954-8565-45da-893d-e9b9b4370dc8"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Website",
+      "item": [
+        {
+          "name": "Create website for organization",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"code\": \"0189256g5454ffbgbf\",\n  \"name\": \"new25661333\",\n  \"platform\": \"SHOPIFY\",\n  \"domain\": \"new\",\n  \"status\": \"ACTIVE\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/organizations/:orgId/websites",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "organizations",
+                ":orgId",
+                "websites"
+              ],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "5836c954-8565-45da-893d-e9b9b4370dc8"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"platform\": \"SHOPIFY\",\n  \"domain\": \"string\",\n  \"status\": \"ACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:orgId/websites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":orgId",
+                    "websites"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"111c8f3a-76bb-6440-0221-f7f6fc61548b\",\n  \"orgId\": \"7f8abecf-220c-1546-c133-112b8863cb51\",\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"platform\": \"OTHER\",\n  \"status\": \"ACTIVE\",\n  \"createdAt\": \"2001-11-22T14:50:53.764Z\",\n  \"updatedAt\": \"2019-09-23T00:26:55.759Z\",\n  \"domain\": \"string\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"platform\": \"SHOPIFY\",\n  \"domain\": \"string\",\n  \"status\": \"ACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:orgId/websites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":orgId",
+                    "websites"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"string\",\n  \"name\": \"string\",\n  \"platform\": \"SHOPIFY\",\n  \"domain\": \"string\",\n  \"status\": \"ACTIVE\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:orgId/websites",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":orgId",
+                    "websites"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Search websites within an organization by websiteId/code/domain",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/organizations/:orgId/websites/search?websiteId=&code=&domain=&page=0&size=2",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "organizations",
+                ":orgId",
+                "websites",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "websiteId",
+                  "value": "",
+                  "description": "Website UUID (returns one item if exact match)"
+                },
+                {
+                  "key": "code",
+                  "value": ""
+                },
+                {
+                  "key": "domain",
+                  "value": ""
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "0-based page index"
+                },
+                {
+                  "key": "size",
+                  "value": "2",
+                  "description": "Batch size / page size"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orgId",
+                  "value": "5836c954-8565-45da-893d-e9b9b4370dc8"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Paged websites",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:orgId/websites/search?websiteId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&code=string&domain=string&page=0&size=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":orgId",
+                    "websites",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "Website UUID (returns one item if exact match)",
+                      "key": "websiteId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "code",
+                      "value": "string"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "string"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "7055cd97-c559-47f8-938b-6e1ce836b75c"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"009e2793-2b18-e4af-8bee-cd71afcefd3c\",\n      \"orgId\": \"87b560d0-2810-e191-c512-a760e2e6ea4c\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"NETSUITE\",\n      \"status\": \"INACTIVE\",\n      \"createdAt\": \"1998-08-02T20:48:56.425Z\",\n      \"updatedAt\": \"1987-08-27T10:22:30.472Z\",\n      \"domain\": \"string\"\n    },\n    {\n      \"id\": \"6cb06d70-983a-cdf1-2619-227ac07a4ffa\",\n      \"orgId\": \"28cc1a53-793a-731e-84fd-b1b8071ac0dd\",\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"platform\": \"NETSUITE\",\n      \"status\": \"INACTIVE\",\n      \"createdAt\": \"1981-02-17T07:31:02.726Z\",\n      \"updatedAt\": \"2024-05-16T09:48:59.247Z\",\n      \"domain\": \"string\"\n    }\n  ],\n  \"page\": 5902,\n  \"size\": 2768,\n  \"totalElements\": 3019,\n  \"totalPages\": 6717,\n  \"hasNext\": false\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:orgId/websites/search?websiteId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&code=string&domain=string&page=0&size=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":orgId",
+                    "websites",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "Website UUID (returns one item if exact match)",
+                      "key": "websiteId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "code",
+                      "value": "string"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "string"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "9b7c6d13-924b-4c9b-a223-8e8403d03eb8"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/organizations/:orgId/websites/search?websiteId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&code=string&domain=string&page=0&size=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "organizations",
+                    ":orgId",
+                    "websites",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "Website UUID (returns one item if exact match)",
+                      "key": "websiteId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "code",
+                      "value": "string"
+                    },
+                    {
+                      "key": "domain",
+                      "value": "string"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "43ae8934-6e34-4dae-b5d5-7f86d0bbee02"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Order",
+      "item": [
+        {
+          "name": "Create (or upsert) order",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orgId\": \"2ad87979-75fa-1f06-485a-8820805e2a30\",\n  \"websiteId\": \"357d36b4-8506-02f2-7e0a-4a1955bb4ecb\",\n  \"externalOrderId\": \"string\",\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"PARTIALLY_PAID\",\n  \"fulfillmentStatus\": \"FULFILLED\",\n  \"customerEmail\": \"RYXIPzsQc5Me@giazDKojJcxLOlVafGdsZQVvaIJVwX.lxfk\",\n  \"orderTotal\": 9209.067169325133,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"1983-03-30T11:54:48.762Z\",\n  \"orderUpdatedAt\": \"2013-08-21T06:39:02.839Z\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Created/Upserted",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orgId\": \"2ad87979-75fa-1f06-485a-8820805e2a30\",\n  \"websiteId\": \"357d36b4-8506-02f2-7e0a-4a1955bb4ecb\",\n  \"externalOrderId\": \"string\",\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"PARTIALLY_PAID\",\n  \"fulfillmentStatus\": \"FULFILLED\",\n  \"customerEmail\": \"RYXIPzsQc5Me@giazDKojJcxLOlVafGdsZQVvaIJVwX.lxfk\",\n  \"orderTotal\": 9209.067169325133,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"1983-03-30T11:54:48.762Z\",\n  \"orderUpdatedAt\": \"2013-08-21T06:39:02.839Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"76007258-7c1c-75f0-a8fa-a4b4bc0732de\",\n  \"orgId\": \"ec53168c-44e8-ef10-a4dd-38d1981b80ba\",\n  \"websiteId\": \"16b1aa4c-c98b-2cfd-d8f4-332398aecd99\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"PARTIALLY_REFUNDED\",\n  \"fulfillmentStatus\": \"FULFILLED\",\n  \"orderTotal\": 5711.713230597761,\n  \"ingestedAt\": \"1999-12-18T11:44:58.574Z\",\n  \"createdAt\": \"1976-09-15T16:20:41.962Z\",\n  \"updatedAt\": \"1999-09-15T01:57:16.085Z\",\n  \"externalOrderNumber\": \"string\",\n  \"customerEmail\": \"NHqJ0OSw@KZyeckeczRCKtVpgXLuYcG.wxfr\",\n  \"currency\": \"USD\",\n  \"orderCreatedAt\": \"2023-09-07T17:32:10.089Z\",\n  \"orderUpdatedAt\": \"1958-11-08T23:10:15.760Z\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orgId\": \"2ad87979-75fa-1f06-485a-8820805e2a30\",\n  \"websiteId\": \"357d36b4-8506-02f2-7e0a-4a1955bb4ecb\",\n  \"externalOrderId\": \"string\",\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"PARTIALLY_PAID\",\n  \"fulfillmentStatus\": \"FULFILLED\",\n  \"customerEmail\": \"RYXIPzsQc5Me@giazDKojJcxLOlVafGdsZQVvaIJVwX.lxfk\",\n  \"orderTotal\": 9209.067169325133,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"1983-03-30T11:54:48.762Z\",\n  \"orderUpdatedAt\": \"2013-08-21T06:39:02.839Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Search orders (date range + pagination)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders?orgId=5836c954-8565-45da-893d-e9b9b4370dc8&websiteId=bc97011d-e063-4dad-8f4b-b4bd4ac0a28f&from=&to=&page=0&size=50&sort=updatedAt,desc&status=&financialStatus=&fulfillmentStatus=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders"
+              ],
+              "query": [
+                {
+                  "key": "orgId",
+                  "value": "5836c954-8565-45da-893d-e9b9b4370dc8"
+                },
+                {
+                  "key": "websiteId",
+                  "value": "bc97011d-e063-4dad-8f4b-b4bd4ac0a28f"
+                },
+                {
+                  "key": "from",
+                  "value": "",
+                  "description": "Start datetime (inclusive), ISO-8601"
+                },
+                {
+                  "key": "to",
+                  "value": "",
+                  "description": "End datetime (inclusive), ISO-8601"
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "0-based page index"
+                },
+                {
+                  "key": "size",
+                  "value": "50",
+                  "description": "Batch size / page size"
+                },
+                {
+                  "key": "sort",
+                  "value": "updatedAt,desc",
+                  "description": "Sorting, e.g. createdAt,desc or updatedAt,asc"
+                },
+                {
+                  "key": "status",
+                  "value": ""
+                },
+                {
+                  "key": "financialStatus",
+                  "value": ""
+                },
+                {
+                  "key": "fulfillmentStatus",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Paged orders",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?orgId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&websiteId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=CLOSED&financialStatus=VOIDED&fulfillmentStatus=FULFILLED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "websiteId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "CLOSED"
+                    },
+                    {
+                      "key": "financialStatus",
+                      "value": "VOIDED"
+                    },
+                    {
+                      "key": "fulfillmentStatus",
+                      "value": "FULFILLED"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "08c478cc-d725-4eef-a349-6876156dd0ef"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"46db35aa-31a9-dc58-b611-71301d88f50a\",\n      \"orgId\": \"a92598e9-99aa-e198-b45e-79694231c4be\",\n      \"websiteId\": \"5f639397-b855-5f71-bf9f-521bc75f9c0d\",\n      \"externalOrderId\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"financialStatus\": \"PAID\",\n      \"fulfillmentStatus\": \"PARTIAL\",\n      \"orderTotal\": 4247.830804385093,\n      \"ingestedAt\": \"1969-12-15T17:03:46.424Z\",\n      \"createdAt\": \"1950-04-23T02:22:25.259Z\",\n      \"updatedAt\": \"2006-04-15T20:02:01.223Z\",\n      \"externalOrderNumber\": \"string\",\n      \"customerEmail\": \"ciPYFP31218@FgGNIulGZJYFZddxUmvIEqwcjBqNuh.oem\",\n      \"currency\": \"USD\",\n      \"orderCreatedAt\": \"2024-10-20T06:08:57.968Z\",\n      \"orderUpdatedAt\": \"1994-02-19T06:38:31.733Z\"\n    },\n    {\n      \"id\": \"3d770549-1677-8166-7fa9-5e30f86ec5a9\",\n      \"orgId\": \"5f59ea6d-66c7-e06a-4125-7678e2377c46\",\n      \"websiteId\": \"dc14df9c-1843-96e2-6329-d411471a3f21\",\n      \"externalOrderId\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"financialStatus\": \"PARTIALLY_REFUNDED\",\n      \"fulfillmentStatus\": \"FULFILLED\",\n      \"orderTotal\": 7339.082084654109,\n      \"ingestedAt\": \"2019-03-28T18:40:46.076Z\",\n      \"createdAt\": \"1987-01-13T18:36:12.248Z\",\n      \"updatedAt\": \"1952-03-01T10:46:05.072Z\",\n      \"externalOrderNumber\": \"string\",\n      \"customerEmail\": \"85ynE@UMQ.oq\",\n      \"currency\": \"USD\",\n      \"orderCreatedAt\": \"1962-07-15T13:12:05.947Z\",\n      \"orderUpdatedAt\": \"1950-10-20T19:21:45.303Z\"\n    }\n  ],\n  \"page\": 4416,\n  \"size\": 6231,\n  \"totalElements\": 6742,\n  \"totalPages\": 6661,\n  \"hasNext\": true\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders?orgId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&websiteId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=CLOSED&financialStatus=VOIDED&fulfillmentStatus=FULFILLED",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "websiteId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "CLOSED"
+                    },
+                    {
+                      "key": "financialStatus",
+                      "value": "VOIDED"
+                    },
+                    {
+                      "key": "fulfillmentStatus",
+                      "value": "FULFILLED"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "f6228e26-1c7d-4d29-aacb-44cbb7ac6bbf"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Search order by external order id/number",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/search?orgId=5836c954-8565-45da-893d-e9b9b4370dc8&websiteId=bc97011d-e063-4dad-8f4b-b4bd4ac0a28f&externalOrderId=&externalOrderNumber=string&page=0&size=50",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "orgId",
+                  "value": "5836c954-8565-45da-893d-e9b9b4370dc8"
+                },
+                {
+                  "key": "websiteId",
+                  "value": "bc97011d-e063-4dad-8f4b-b4bd4ac0a28f"
+                },
+                {
+                  "key": "externalOrderId",
+                  "value": ""
+                },
+                {
+                  "key": "externalOrderNumber",
+                  "value": "string"
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "0-based page index"
+                },
+                {
+                  "key": "size",
+                  "value": "50",
+                  "description": "Batch size / page size"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Paged orders",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/search?orgId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&websiteId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&externalOrderId=string&externalOrderNumber=string&page=0&size=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "websiteId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "externalOrderId",
+                      "value": "string"
+                    },
+                    {
+                      "key": "externalOrderNumber",
+                      "value": "string"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "b4dc6537-de16-48e1-b652-c584e8f4a84d"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"46db35aa-31a9-dc58-b611-71301d88f50a\",\n      \"orgId\": \"a92598e9-99aa-e198-b45e-79694231c4be\",\n      \"websiteId\": \"5f639397-b855-5f71-bf9f-521bc75f9c0d\",\n      \"externalOrderId\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"financialStatus\": \"PAID\",\n      \"fulfillmentStatus\": \"PARTIAL\",\n      \"orderTotal\": 4247.830804385093,\n      \"ingestedAt\": \"1969-12-15T17:03:46.424Z\",\n      \"createdAt\": \"1950-04-23T02:22:25.259Z\",\n      \"updatedAt\": \"2006-04-15T20:02:01.223Z\",\n      \"externalOrderNumber\": \"string\",\n      \"customerEmail\": \"ciPYFP31218@FgGNIulGZJYFZddxUmvIEqwcjBqNuh.oem\",\n      \"currency\": \"USD\",\n      \"orderCreatedAt\": \"2024-10-20T06:08:57.968Z\",\n      \"orderUpdatedAt\": \"1994-02-19T06:38:31.733Z\"\n    },\n    {\n      \"id\": \"3d770549-1677-8166-7fa9-5e30f86ec5a9\",\n      \"orgId\": \"5f59ea6d-66c7-e06a-4125-7678e2377c46\",\n      \"websiteId\": \"dc14df9c-1843-96e2-6329-d411471a3f21\",\n      \"externalOrderId\": \"string\",\n      \"status\": \"CANCELLED\",\n      \"financialStatus\": \"PARTIALLY_REFUNDED\",\n      \"fulfillmentStatus\": \"FULFILLED\",\n      \"orderTotal\": 7339.082084654109,\n      \"ingestedAt\": \"2019-03-28T18:40:46.076Z\",\n      \"createdAt\": \"1987-01-13T18:36:12.248Z\",\n      \"updatedAt\": \"1952-03-01T10:46:05.072Z\",\n      \"externalOrderNumber\": \"string\",\n      \"customerEmail\": \"85ynE@UMQ.oq\",\n      \"currency\": \"USD\",\n      \"orderCreatedAt\": \"1962-07-15T13:12:05.947Z\",\n      \"orderUpdatedAt\": \"1950-10-20T19:21:45.303Z\"\n    }\n  ],\n  \"page\": 4416,\n  \"size\": 6231,\n  \"totalElements\": 6742,\n  \"totalPages\": 6661,\n  \"hasNext\": true\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/search?orgId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&websiteId=5bc015fa-380d-bc27-df1a-d3b75df7a0b6&externalOrderId=string&externalOrderNumber=string&page=0&size=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "orgId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "websiteId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "externalOrderId",
+                      "value": "string"
+                    },
+                    {
+                      "key": "externalOrderNumber",
+                      "value": "string"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "ebd372ec-1a56-479c-a857-77ea60c15f51"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get order by id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "43a1d0b0-2f52-45cd-a859-dfbfcb3f20a8"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Order",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "e66cdac1-ccef-4749-a4ba-0e038c478c3f"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"76007258-7c1c-75f0-a8fa-a4b4bc0732de\",\n  \"orgId\": \"ec53168c-44e8-ef10-a4dd-38d1981b80ba\",\n  \"websiteId\": \"16b1aa4c-c98b-2cfd-d8f4-332398aecd99\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"PARTIALLY_REFUNDED\",\n  \"fulfillmentStatus\": \"FULFILLED\",\n  \"orderTotal\": 5711.713230597761,\n  \"ingestedAt\": \"1999-12-18T11:44:58.574Z\",\n  \"createdAt\": \"1976-09-15T16:20:41.962Z\",\n  \"updatedAt\": \"1999-09-15T01:57:16.085Z\",\n  \"externalOrderNumber\": \"string\",\n  \"customerEmail\": \"NHqJ0OSw@KZyeckeczRCKtVpgXLuYcG.wxfr\",\n  \"currency\": \"USD\",\n  \"orderCreatedAt\": \"2023-09-07T17:32:10.089Z\",\n  \"orderUpdatedAt\": \"1958-11-08T23:10:15.760Z\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "b709906c-7261-4a9f-bbd2-2db094f6c933"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update order (full replace)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orgId\": \"5836c954-8565-45da-893d-e9b9b4370dc8\",\n  \"websiteId\": \"bc97011d-e063-4dad-8f4b-b4bd4ac0a28f\",\n  \"externalOrderId\": \"string\",\n  \"externalOrderNumber\": \"qwqwqw\",\n  \"status\": \"CLOSED\",\n  \"financialStatus\": \"PAID\",\n  \"fulfillmentStatus\": \"UNFULFILLED\",\n  \"customerEmail\": \"u6v@iLwUB.din\",\n  \"orderTotal\": 11.941393186823,\n  \"currency\": \"HHH\",\n  \"orderCreatedAt\": \"1964-05-05T12:47:57.491Z\",\n  \"orderUpdatedAt\": \"1988-12-29T11:30:27.232Z\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "43a1d0b0-2f52-45cd-a859-dfbfcb3f20a8"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Updated",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orgId\": \"660294c7-e444-cee2-c12a-8e810f240284\",\n  \"websiteId\": \"41ec2877-372c-2b06-caf5-079533227a17\",\n  \"externalOrderId\": \"string\",\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"UNKNOWN\",\n  \"fulfillmentStatus\": \"UNKNOWN\",\n  \"customerEmail\": \"u6v@iLwUB.din\",\n  \"orderTotal\": 6745.941393186823,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"1964-05-05T12:47:57.491Z\",\n  \"orderUpdatedAt\": \"1988-12-29T11:30:27.232Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "dd94e429-741f-4bc1-90cc-e8e2f7f17012"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"76007258-7c1c-75f0-a8fa-a4b4bc0732de\",\n  \"orgId\": \"ec53168c-44e8-ef10-a4dd-38d1981b80ba\",\n  \"websiteId\": \"16b1aa4c-c98b-2cfd-d8f4-332398aecd99\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"PARTIALLY_REFUNDED\",\n  \"fulfillmentStatus\": \"FULFILLED\",\n  \"orderTotal\": 5711.713230597761,\n  \"ingestedAt\": \"1999-12-18T11:44:58.574Z\",\n  \"createdAt\": \"1976-09-15T16:20:41.962Z\",\n  \"updatedAt\": \"1999-09-15T01:57:16.085Z\",\n  \"externalOrderNumber\": \"string\",\n  \"customerEmail\": \"NHqJ0OSw@KZyeckeczRCKtVpgXLuYcG.wxfr\",\n  \"currency\": \"USD\",\n  \"orderCreatedAt\": \"2023-09-07T17:32:10.089Z\",\n  \"orderUpdatedAt\": \"1958-11-08T23:10:15.760Z\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orgId\": \"660294c7-e444-cee2-c12a-8e810f240284\",\n  \"websiteId\": \"41ec2877-372c-2b06-caf5-079533227a17\",\n  \"externalOrderId\": \"string\",\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"UNKNOWN\",\n  \"fulfillmentStatus\": \"UNKNOWN\",\n  \"customerEmail\": \"u6v@iLwUB.din\",\n  \"orderTotal\": 6745.941393186823,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"1964-05-05T12:47:57.491Z\",\n  \"orderUpdatedAt\": \"1988-12-29T11:30:27.232Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "b2877f2e-52d1-4eea-9fa9-e12f9744e399"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orgId\": \"660294c7-e444-cee2-c12a-8e810f240284\",\n  \"websiteId\": \"41ec2877-372c-2b06-caf5-079533227a17\",\n  \"externalOrderId\": \"string\",\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"UNKNOWN\",\n  \"fulfillmentStatus\": \"UNKNOWN\",\n  \"customerEmail\": \"u6v@iLwUB.din\",\n  \"orderTotal\": 6745.941393186823,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"1964-05-05T12:47:57.491Z\",\n  \"orderUpdatedAt\": \"1988-12-29T11:30:27.232Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "c4dbd936-2d1a-440d-adad-dd10554b608d"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update order (partial)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"externalOrderNumber\": \"string\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"CREATED88\",\n  \"financialStatus\": \"PAID\",\n  \"fulfillmentStatus\": \"UNKNOWN\",\n  \"customerEmail\": \"UxnDB0nYB8qi59P@PfaraLzlNhkHDE.hdr\",\n  \"orderTotal\": 62773.8309753438531,\n  \"currency\": \"ARD\",\n  \"orderCreatedAt\": \"2015-07-22T23:57:31.939Z\"\n \n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "43a1d0b0-2f52-45cd-a859-dfbfcb3f20a8"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CREATED\",\n  \"financialStatus\": \"PAID\",\n  \"fulfillmentStatus\": \"UNKNOWN\",\n  \"customerEmail\": \"UxnDB0nYB8qi59P@PfaraLzlNhkHDE.hdr\",\n  \"orderTotal\": 623.8309753438531,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"2015-07-22T23:57:31.939Z\",\n  \"orderUpdatedAt\": \"1960-10-13T19:05:46.855Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "8e064fbc-ee3a-4df6-b669-c9c7bd4f6d86"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"76007258-7c1c-75f0-a8fa-a4b4bc0732de\",\n  \"orgId\": \"ec53168c-44e8-ef10-a4dd-38d1981b80ba\",\n  \"websiteId\": \"16b1aa4c-c98b-2cfd-d8f4-332398aecd99\",\n  \"externalOrderId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"financialStatus\": \"PARTIALLY_REFUNDED\",\n  \"fulfillmentStatus\": \"FULFILLED\",\n  \"orderTotal\": 5711.713230597761,\n  \"ingestedAt\": \"1999-12-18T11:44:58.574Z\",\n  \"createdAt\": \"1976-09-15T16:20:41.962Z\",\n  \"updatedAt\": \"1999-09-15T01:57:16.085Z\",\n  \"externalOrderNumber\": \"string\",\n  \"customerEmail\": \"NHqJ0OSw@KZyeckeczRCKtVpgXLuYcG.wxfr\",\n  \"currency\": \"USD\",\n  \"orderCreatedAt\": \"2023-09-07T17:32:10.089Z\",\n  \"orderUpdatedAt\": \"1958-11-08T23:10:15.760Z\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CREATED\",\n  \"financialStatus\": \"PAID\",\n  \"fulfillmentStatus\": \"UNKNOWN\",\n  \"customerEmail\": \"UxnDB0nYB8qi59P@PfaraLzlNhkHDE.hdr\",\n  \"orderTotal\": 623.8309753438531,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"2015-07-22T23:57:31.939Z\",\n  \"orderUpdatedAt\": \"1960-10-13T19:05:46.855Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "7d127e94-9a24-4ec8-a609-660716a74e03"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalOrderNumber\": \"string\",\n  \"status\": \"CREATED\",\n  \"financialStatus\": \"PAID\",\n  \"fulfillmentStatus\": \"UNKNOWN\",\n  \"customerEmail\": \"UxnDB0nYB8qi59P@PfaraLzlNhkHDE.hdr\",\n  \"orderTotal\": 623.8309753438531,\n  \"currency\": \"string\",\n  \"orderCreatedAt\": \"2015-07-22T23:57:31.939Z\",\n  \"orderUpdatedAt\": \"1960-10-13T19:05:46.855Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "751d779b-dd5b-4316-848e-7aea889a7308"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete order",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "20ac6ca3-a58b-452f-a36f-318cde86612a"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No Content",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "ee3f8d76-7a72-4bb5-a7a2-c20067767cba"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fulfillment",
+      "item": [
+        {
+          "name": "Create fulfillment for an order",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"externalFulfillmentId\": \"stri1313ng000\",\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1974-03-20T12:27:15.374Z\",\n  \"deliveredAt\": \"1989-07-06T02:34:14.605Z\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId/fulfillments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId",
+                "fulfillments"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "184855c6-c555-41fd-86ab-9e4d02347b66"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1974-03-20T12:27:15.374Z\",\n  \"deliveredAt\": \"1968-07-06T02:34:14.605Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "92535fc3-2ef8-4e10-a149-c1058ace7723"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"3489815e-8f25-100d-2afd-ddb1a88f963b\",\n  \"orderId\": \"ddad79bb-61f5-6b2f-904e-8022098f547b\",\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"createdAt\": \"2022-10-25T16:22:37.601Z\",\n  \"updatedAt\": \"2005-04-14T17:42:06.007Z\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1967-10-12T05:13:40.189Z\",\n  \"deliveredAt\": \"1953-12-22T00:15:31.758Z\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1974-03-20T12:27:15.374Z\",\n  \"deliveredAt\": \"1968-07-06T02:34:14.605Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "d8432acb-d5ac-4f4b-98c7-8a4aaf65edac"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1974-03-20T12:27:15.374Z\",\n  \"deliveredAt\": \"1968-07-06T02:34:14.605Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "9a83143c-3c98-47cf-a80b-2feae6f612ca"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "List/search fulfillments for an order (date range + pagination)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId/fulfillments?from=2023-05-24T10:33:55.068Z&to=2027-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=&carrier=",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId",
+                "fulfillments"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "2023-05-24T10:33:55.068Z",
+                  "description": "Start datetime (inclusive), ISO-8601"
+                },
+                {
+                  "key": "to",
+                  "value": "2027-05-24T10:33:55.068Z",
+                  "description": "End datetime (inclusive), ISO-8601"
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "0-based page index"
+                },
+                {
+                  "key": "size",
+                  "value": "50",
+                  "description": "Batch size / page size"
+                },
+                {
+                  "key": "sort",
+                  "value": "updatedAt,desc",
+                  "description": "Sorting, e.g. createdAt,desc or updatedAt,asc"
+                },
+                {
+                  "key": "status",
+                  "value": ""
+                },
+                {
+                  "key": "carrier",
+                  "value": ""
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "184855c6-c555-41fd-86ab-9e4d02347b66"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Paged fulfillments",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments?from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=CREATED&carrier=string",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "carrier",
+                      "value": "string"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "160bffb8-a24d-4eb7-a64c-eba64313bf13"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"eadedaa0-63b8-05e4-26dc-9edfda7175ab\",\n      \"orderId\": \"a755ce9e-909b-f513-8980-1ef386c48668\",\n      \"externalFulfillmentId\": \"string\",\n      \"status\": \"CREATED\",\n      \"createdAt\": \"1959-05-07T00:31:14.744Z\",\n      \"updatedAt\": \"1983-10-26T19:51:23.205Z\",\n      \"carrier\": \"string\",\n      \"serviceLevel\": \"string\",\n      \"shippedAt\": \"1992-12-15T21:25:49.581Z\",\n      \"deliveredAt\": \"1997-02-13T15:04:22.607Z\"\n    },\n    {\n      \"id\": \"7b21dc0e-cda5-ddcd-0d9f-962d0b6c47a2\",\n      \"orderId\": \"9805e3cc-1b38-de66-2c69-ccb2834eafb2\",\n      \"externalFulfillmentId\": \"string\",\n      \"status\": \"CREATED\",\n      \"createdAt\": \"2022-01-10T07:47:29.626Z\",\n      \"updatedAt\": \"1955-06-05T19:30:29.037Z\",\n      \"carrier\": \"string\",\n      \"serviceLevel\": \"string\",\n      \"shippedAt\": \"1950-01-15T18:39:50.839Z\",\n      \"deliveredAt\": \"1990-01-11T15:45:28.688Z\"\n    }\n  ],\n  \"page\": 5985,\n  \"size\": 6622,\n  \"totalElements\": 3946,\n  \"totalPages\": 3569,\n  \"hasNext\": true\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments?from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=CREATED&carrier=string",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "carrier",
+                      "value": "string"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "b35c65e3-295b-43fb-8493-9b78d11d733d"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments?from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=CREATED&carrier=string",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "CREATED"
+                    },
+                    {
+                      "key": "carrier",
+                      "value": "string"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "aac0c541-4641-4107-85db-ced2a671174c"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Search fulfillment by external fulfillment id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId/fulfillments/search?externalFulfillmentId=86&page=0&size=50",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId",
+                "fulfillments",
+                "search"
+              ],
+              "query": [
+                {
+                  "key": "externalFulfillmentId",
+                  "value": "86"
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "0-based page index"
+                },
+                {
+                  "key": "size",
+                  "value": "50",
+                  "description": "Batch size / page size"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "184855c6-c555-41fd-86ab-9e4d02347b66"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Paged fulfillments",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/search?externalFulfillmentId=string&page=0&size=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "externalFulfillmentId",
+                      "value": "string"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "97783755-5091-46ec-9a27-eb3956563208"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"eadedaa0-63b8-05e4-26dc-9edfda7175ab\",\n      \"orderId\": \"a755ce9e-909b-f513-8980-1ef386c48668\",\n      \"externalFulfillmentId\": \"string\",\n      \"status\": \"CREATED\",\n      \"createdAt\": \"1959-05-07T00:31:14.744Z\",\n      \"updatedAt\": \"1983-10-26T19:51:23.205Z\",\n      \"carrier\": \"string\",\n      \"serviceLevel\": \"string\",\n      \"shippedAt\": \"1992-12-15T21:25:49.581Z\",\n      \"deliveredAt\": \"1997-02-13T15:04:22.607Z\"\n    },\n    {\n      \"id\": \"7b21dc0e-cda5-ddcd-0d9f-962d0b6c47a2\",\n      \"orderId\": \"9805e3cc-1b38-de66-2c69-ccb2834eafb2\",\n      \"externalFulfillmentId\": \"string\",\n      \"status\": \"CREATED\",\n      \"createdAt\": \"2022-01-10T07:47:29.626Z\",\n      \"updatedAt\": \"1955-06-05T19:30:29.037Z\",\n      \"carrier\": \"string\",\n      \"serviceLevel\": \"string\",\n      \"shippedAt\": \"1950-01-15T18:39:50.839Z\",\n      \"deliveredAt\": \"1990-01-11T15:45:28.688Z\"\n    }\n  ],\n  \"page\": 5985,\n  \"size\": 6622,\n  \"totalElements\": 3946,\n  \"totalPages\": 3569,\n  \"hasNext\": true\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/search?externalFulfillmentId=string&page=0&size=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "key": "externalFulfillmentId",
+                      "value": "string"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "540049a7-c434-41aa-808c-15e3cf3e21b3"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get fulfillment by id",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId",
+                "fulfillments",
+                ":fulfillmentId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "184855c6-c555-41fd-86ab-9e4d02347b66"
+                },
+                {
+                  "key": "fulfillmentId",
+                  "value": "06543a6b-7573-4ace-bfb2-956e47621cc5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Fulfillment",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "336bdf04-78c9-4734-b7ee-9849c4e97717"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"3489815e-8f25-100d-2afd-ddb1a88f963b\",\n  \"orderId\": \"ddad79bb-61f5-6b2f-904e-8022098f547b\",\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"createdAt\": \"2022-10-25T16:22:37.601Z\",\n  \"updatedAt\": \"2005-04-14T17:42:06.007Z\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1967-10-12T05:13:40.189Z\",\n  \"deliveredAt\": \"1953-12-22T00:15:31.758Z\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "eb2a568c-ef6a-49c0-936e-114c97655c27"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update fulfillment (full replace)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"externalFulfillmentId\": \"string11\",\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string11444\",\n  \"serviceLevel\": \"string11444\",\n  \"shippedAt\": \"1952-08-06T12:37:39.350Z\",\n  \"deliveredAt\": \"1954-01-10T10:46:10.164Z\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId",
+                "fulfillments",
+                ":fulfillmentId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "184855c6-c555-41fd-86ab-9e4d02347b66"
+                },
+                {
+                  "key": "fulfillmentId",
+                  "value": "06543a6b-7573-4ace-bfb2-956e47621cc5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Updated",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"FAILED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1982-08-06T12:37:39.350Z\",\n  \"deliveredAt\": \"1974-01-10T10:46:10.164Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "b549732e-26c7-40bb-a206-4ce02f487c20"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"3489815e-8f25-100d-2afd-ddb1a88f963b\",\n  \"orderId\": \"ddad79bb-61f5-6b2f-904e-8022098f547b\",\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"createdAt\": \"2022-10-25T16:22:37.601Z\",\n  \"updatedAt\": \"2005-04-14T17:42:06.007Z\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1967-10-12T05:13:40.189Z\",\n  \"deliveredAt\": \"1953-12-22T00:15:31.758Z\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"FAILED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1982-08-06T12:37:39.350Z\",\n  \"deliveredAt\": \"1974-01-10T10:46:10.164Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "63079d39-aca3-4291-a459-720fc9f1ecc2"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"FAILED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1982-08-06T12:37:39.350Z\",\n  \"deliveredAt\": \"1974-01-10T10:46:10.164Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "a3907127-efcc-468b-a2d1-d3bdde5a0e3d"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update fulfillment (partial)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"abc\",\n  \"serviceLevel\": \"abc\",\n  \"shippedAt\": \"1953-12-24T22:52:34.890Z\",\n  \"deliveredAt\": \"1977-06-20T22:12:15.137Z\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId",
+                "fulfillments",
+                ":fulfillmentId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "184855c6-c555-41fd-86ab-9e4d02347b66"
+                },
+                {
+                  "key": "fulfillmentId",
+                  "value": "06543a6b-7573-4ace-bfb2-956e47621cc5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Updated",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1953-12-24T22:52:34.890Z\",\n  \"deliveredAt\": \"1977-06-20T22:12:15.137Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "d9a8bcc6-2905-4f0e-808f-11c239acd163"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"3489815e-8f25-100d-2afd-ddb1a88f963b\",\n  \"orderId\": \"ddad79bb-61f5-6b2f-904e-8022098f547b\",\n  \"externalFulfillmentId\": \"string\",\n  \"status\": \"CANCELLED\",\n  \"createdAt\": \"2022-10-25T16:22:37.601Z\",\n  \"updatedAt\": \"2005-04-14T17:42:06.007Z\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1967-10-12T05:13:40.189Z\",\n  \"deliveredAt\": \"1953-12-22T00:15:31.758Z\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1953-12-24T22:52:34.890Z\",\n  \"deliveredAt\": \"1977-06-20T22:12:15.137Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "6170b0d8-3002-4323-a94a-5f4d9c925245"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"DELIVERED\",\n  \"carrier\": \"string\",\n  \"serviceLevel\": \"string\",\n  \"shippedAt\": \"1953-12-24T22:52:34.890Z\",\n  \"deliveredAt\": \"1977-06-20T22:12:15.137Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "75897afe-755f-4476-a5d0-a9a983895ab5"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Delete fulfillment",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "orders",
+                ":orderId",
+                "fulfillments",
+                ":fulfillmentId"
+              ],
+              "variable": [
+                {
+                  "key": "orderId",
+                  "value": "184855c6-c555-41fd-86ab-9e4d02347b66"
+                },
+                {
+                  "key": "fulfillmentId",
+                  "value": "06543a6b-7573-4ace-bfb2-956e47621cc5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "No Content",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/orders/:orderId/fulfillments/:fulfillmentId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "orders",
+                    ":orderId",
+                    "fulfillments",
+                    ":fulfillmentId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "orderId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    },
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "c25df272-8fcb-4958-8296-65e6e281b845"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tracking",
+      "item": [
+        {
+          "name": "Create tracking for a fulfillment",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trackingNumber\": \"string87979\",\n  \"carrier\": \"string\",\n  \"trackingUrl\": \"string\",\n  \"status\": \"UNKNOWN\",\n  \"isPrimary\": false,\n  \"lastEventAt\": \"1991-03-19T16:32:32.797Z\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fulfillments",
+                ":fulfillmentId",
+                "tracking"
+              ],
+              "variable": [
+                {
+                  "key": "fulfillmentId",
+                  "value": "439699f8-211e-4330-b9b1-f659d12bcad7"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trackingNumber\": \"string\",\n  \"carrier\": \"string\",\n  \"trackingUrl\": \"string\",\n  \"status\": \"LABEL_CREATED\",\n  \"isPrimary\": false,\n  \"lastEventAt\": \"1991-03-19T16:32:32.797Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fulfillments",
+                    ":fulfillmentId",
+                    "tracking"
+                  ],
+                  "variable": [
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "817df60c-0bba-4ef3-a594-04610047803a"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"id\": \"b7057239-69c8-6746-eb7b-ada9af1ca20b\",\n  \"fulfillmentId\": \"6dd99cbc-9f52-870e-6d05-02fae338eb13\",\n  \"trackingNumber\": \"string\",\n  \"status\": \"DELIVERED\",\n  \"isPrimary\": true,\n  \"createdAt\": \"2024-10-16T13:35:32.256Z\",\n  \"updatedAt\": \"2008-10-31T11:30:43.708Z\",\n  \"carrier\": \"string\",\n  \"trackingUrl\": \"string\",\n  \"lastEventAt\": \"1985-11-30T08:43:22.407Z\"\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trackingNumber\": \"string\",\n  \"carrier\": \"string\",\n  \"trackingUrl\": \"string\",\n  \"status\": \"LABEL_CREATED\",\n  \"isPrimary\": false,\n  \"lastEventAt\": \"1991-03-19T16:32:32.797Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fulfillments",
+                    ":fulfillmentId",
+                    "tracking"
+                  ],
+                  "variable": [
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "985ca450-b8c7-40c9-845e-64bfe630ef0c"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"trackingNumber\": \"string\",\n  \"carrier\": \"string\",\n  \"trackingUrl\": \"string\",\n  \"status\": \"LABEL_CREATED\",\n  \"isPrimary\": false,\n  \"lastEventAt\": \"1991-03-19T16:32:32.797Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fulfillments",
+                    ":fulfillmentId",
+                    "tracking"
+                  ],
+                  "variable": [
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "91701ee7-8d96-42a9-b612-f012c5e37d92"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "List/search tracking for a fulfillment (date range + pagination)",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking?from=&to=&page=0&size=50&sort=updatedAt,desc&status=&carrier=&trackingNumber=444",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "fulfillments",
+                ":fulfillmentId",
+                "tracking"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "",
+                  "description": "Start datetime (inclusive), ISO-8601"
+                },
+                {
+                  "key": "to",
+                  "value": "",
+                  "description": "End datetime (inclusive), ISO-8601"
+                },
+                {
+                  "key": "page",
+                  "value": "0",
+                  "description": "0-based page index"
+                },
+                {
+                  "key": "size",
+                  "value": "50",
+                  "description": "Batch size / page size"
+                },
+                {
+                  "key": "sort",
+                  "value": "updatedAt,desc",
+                  "description": "Sorting, e.g. createdAt,desc or updatedAt,asc"
+                },
+                {
+                  "key": "status",
+                  "value": ""
+                },
+                {
+                  "key": "carrier",
+                  "value": ""
+                },
+                {
+                  "key": "trackingNumber",
+                  "value": "444"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "fulfillmentId",
+                  "value": "439699f8-211e-4330-b9b1-f659d12bcad7"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Paged tracking",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking?from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=IN_TRANSIT&carrier=string&trackingNumber=string",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fulfillments",
+                    ":fulfillmentId",
+                    "tracking"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "IN_TRANSIT"
+                    },
+                    {
+                      "key": "carrier",
+                      "value": "string"
+                    },
+                    {
+                      "key": "trackingNumber",
+                      "value": "string"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "454a171e-ee0d-467b-90ee-1eda082532d1"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"8a657380-2899-a568-d29d-63b0127c7f15\",\n      \"fulfillmentId\": \"e7edc3b8-b108-b398-5848-d160771d1e05\",\n      \"trackingNumber\": \"string\",\n      \"status\": \"EXCEPTION\",\n      \"isPrimary\": true,\n      \"createdAt\": \"1972-12-17T20:19:19.882Z\",\n      \"updatedAt\": \"1998-07-27T00:14:50.823Z\",\n      \"carrier\": \"string\",\n      \"trackingUrl\": \"string\",\n      \"lastEventAt\": \"1988-09-17T00:34:47.562Z\"\n    },\n    {\n      \"id\": \"60bd2866-366c-dac5-fda8-d21c2348b217\",\n      \"fulfillmentId\": \"e01279cf-8539-2740-7e21-0df226339edf\",\n      \"trackingNumber\": \"string\",\n      \"status\": \"UNKNOWN\",\n      \"isPrimary\": true,\n      \"createdAt\": \"1955-04-01T21:20:09.048Z\",\n      \"updatedAt\": \"1949-08-26T15:33:03.715Z\",\n      \"carrier\": \"string\",\n      \"trackingUrl\": \"string\",\n      \"lastEventAt\": \"1984-03-10T19:45:40.731Z\"\n    }\n  ],\n  \"page\": 9321,\n  \"size\": 7818,\n  \"totalElements\": 8830,\n  \"totalPages\": 4193,\n  \"hasNext\": true\n}"
+            },
+            {
+              "name": "Bad Request",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking?from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=IN_TRANSIT&carrier=string&trackingNumber=string",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fulfillments",
+                    ":fulfillmentId",
+                    "tracking"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "IN_TRANSIT"
+                    },
+                    {
+                      "key": "carrier",
+                      "value": "string"
+                    },
+                    {
+                      "key": "trackingNumber",
+                      "value": "string"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "b3d9612c-db5b-44c6-9df1-3590af4e59f9"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/fulfillments/:fulfillmentId/tracking?from=2023-05-24T10:33:55.068Z&to=2023-05-24T10:33:55.068Z&page=0&size=50&sort=updatedAt,desc&status=IN_TRANSIT&carrier=string&trackingNumber=string",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "fulfillments",
+                    ":fulfillmentId",
+                    "tracking"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start datetime (inclusive), ISO-8601",
+                      "key": "from",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "End datetime (inclusive), ISO-8601",
+                      "key": "to",
+                      "value": "2023-05-24T10:33:55.068Z"
+                    },
+                    {
+                      "description": "0-based page index",
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Batch size / page size",
+                      "key": "size",
+                      "value": "50"
+                    },
+                    {
+                      "description": "Sorting, e.g. createdAt,desc or updatedAt,asc",
+                      "key": "sort",
+                      "value": "updatedAt,desc"
+                    },
+                    {
+                      "key": "status",
+                      "value": "IN_TRANSIT"
+                    },
+                    {
+                      "key": "carrier",
+                      "value": "string"
+                    },
+                    {
+                      "key": "trackingNumber",
+                      "value": "string"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "fulfillmentId",
+                      "value": "5bc015fa-380d-bc27-df1a-d3b75df7a0b6"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json",
+                  "uuid": "35aab5e3-d00b-45c2-ba38-52d44dfd1b34"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n  \"timestamp\": \"1999-11-07T04:30:14.071Z\",\n  \"status\": 6889,\n  \"error\": \"string\",\n  \"message\": \"string\",\n  \"path\": \"string\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseURL",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
