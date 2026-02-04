@@ -253,7 +253,7 @@ e-commerce-logistics-platform/
 |--------|----------|-------------|
 | `POST` | `/api/orders` | Create new order |
 | `GET` | `/api/orders/{orderId}` | Get order by ID |
-| `GET` | `/api/orders/external/{externalOrderId}` | Get order by external ID |
+| `GET` | `/api/orders/external/{externalOrderId}` | Get order by external ID (paginated)|
 | `GET` | `/api/orders/search` | Search orders with filters (paginated) |
 | `PUT` | `/api/orders/{orderId}` | Full update of order |
 | `PATCH` | `/api/orders/{orderId}` | Partial update of order |
@@ -265,6 +265,7 @@ e-commerce-logistics-platform/
 |--------|----------|-------------|
 | `POST` | `/api/orders/{orderId}/fulfillments` | Create fulfillment |
 | `GET` | `/api/orders/{orderId}/fulfillments` | List fulfillments for order (paginated) |
+| `GET` | `/api/orders/{orderId}/fulfillments/{id}` | Get fulfillment details by externalId (paginated) |
 | `GET` | `/api/orders/{orderId}/fulfillments/{id}` | Get fulfillment details |
 | `PUT` | `/api/orders/{orderId}/fulfillments/{id}` | Full update |
 | `PATCH` | `/api/orders/{orderId}/fulfillments/{id}` | Partial update |
@@ -289,7 +290,7 @@ A complete Postman collection is included in this repository: `logistics-platfor
 4. The collection will be imported with all endpoints ready to use
 
 ### Environment Variables:
-- `baseUrl`: http://localhost:8080/api
+- `baseUrl`: http://localhost:8080
 - Update these in Postman after import based on your setup
 
 ---
