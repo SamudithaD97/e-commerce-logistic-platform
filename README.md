@@ -306,7 +306,7 @@ A complete Postman collection is included in this repository: `logistics-platfor
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/logistics-platform.git
+git clone https://github.com/SamudithaD97/e-commerce-logistic-platform.git
 cd logistics-platform
 ```
 
